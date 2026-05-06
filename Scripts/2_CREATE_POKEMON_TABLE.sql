@@ -12,7 +12,7 @@ IF NOT EXISTS(SELECT * FROM SYS.TABLES WHERE name = 'pokemon')
 		[base_experience] INTEGER,
 		[height] INTEGER,
 		[is_default] BIT,
-		[order] BIT,
+		[order] INTEGER,
 		[weight] INTEGER
 	)
 	
