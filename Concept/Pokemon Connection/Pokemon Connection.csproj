@@ -13,4 +13,8 @@
     <PackageReference Include="NHibernate" Version="5.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PokeConceptBL\PokeConceptBL.csproj" />
+  </ItemGroup>
+
 </Project>
