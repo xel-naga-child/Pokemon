@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PokeConceptBL/PokeConceptBL.csproj" />
+  <Project Path="Pokemon Connection/Pokemon Connection.csproj" />
+</Solution>
