@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="PokeConceptBL"
+                   namespace="PokeConceptBL.Domain">
+
+	<class name="Pokemon">
+		<id name="guid">
+			<generator class="guid" />
+		</id>
+
+		<property name="Id" />
+		<property name="Name" />
+		<property name="Category" />
+		<property name="Base_Experience" />
+		<property name="Height" />
+		<property name="is_default" />
+		<property name="Order" />
+	</class>
+
+</hibernate-mapping>
