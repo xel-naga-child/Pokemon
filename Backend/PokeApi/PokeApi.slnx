@@ -1,6 +1,6 @@
 <Solution>
   <Project Path="PokeApi/PokeApi.csproj" />
+  <Project Path="PokeApiConnection/PokeApiConnection.csproj" Id="bd768d42-cc3f-4d19-949b-ddd492bc81f4" />
   <Project Path="PokeBl/PokeBl.csproj" />
-  <Project Path="PokeCommonHelper/PokeCommonHelper.csproj" Id="6e22c9e0-ed8d-4c75-926c-16c7caa37025" />
-  <Project Path="PokeDbConn/PokeDbConn.csproj" Id="9ca92b44-edf2-4e96-8740-e61a4bd9ba26" />
+  <Project Path="PokeDAL/PokeDAL.csproj" Id="f66b0899-a623-40e4-ab2f-97ea10f34746" />
 </Solution>
