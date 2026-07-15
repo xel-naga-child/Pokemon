@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="PokeApi/PokeApi.csproj" />
+  <Project Path="PokeApiConnection/PokeApiConnection.csproj" Id="bd768d42-cc3f-4d19-949b-ddd492bc81f4" />
   <Project Path="PokeBl/PokeBl.csproj" />
+  <Project Path="PokeDAL/PokeDAL.csproj" Id="f66b0899-a623-40e4-ab2f-97ea10f34746" />
 </Solution>

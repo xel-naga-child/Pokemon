@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Docs\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Execute\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Utility\" />
+    <Folder Include="UnitOfWork\" />
+    <Folder Include="Types\" />
+    <Folder Include="Options\" />
+  </ItemGroup>
+
+</Project>
