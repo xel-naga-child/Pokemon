@@ -10,4 +10,8 @@
     <PackageReference Include="NHibernate" Version="5.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PokeApiConnection\PokeApiConnection.csproj" />
+  </ItemGroup>
+
 </Project>
