@@ -18,9 +18,9 @@ namespace PokeBl.BL.PokemonBL
             _url = url;
         }
 
-        public async Task<Pokemon> GetSinglePokemonAsync<T>(string url) where T : class
+        public async Task<Pokemon> GetSinglePokemonAsync<T>(int id) where T : class
         {
-            Pokemon pokemon = await _pokeApiGet.GetAsync(_url);
+            Pokemon pokemon = await _pokeApiGet.GetAsync(_url+id);
             return pokemon;
         }
     }

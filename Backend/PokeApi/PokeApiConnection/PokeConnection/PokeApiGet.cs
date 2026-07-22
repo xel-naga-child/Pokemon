@@ -11,13 +11,20 @@ namespace PokeApiConnection.PokeConnection
     {
         public async Task<T> GetAsync(string url)
         {
-            using (var httpClient = new HttpClient())
+            try
             {
-                var response = await httpClient.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var deserializedObject = JsonSerializer.Deserialize<T>(jsonResponse);
-                return deserializedObject;
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var deserializedObject = JsonSerializer.Deserialize<T>(jsonResponse);
+                    return deserializedObject;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($" {url}: {ex.Message}", ex);
             }
         }
     }
