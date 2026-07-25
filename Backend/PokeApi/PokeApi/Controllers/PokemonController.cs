@@ -9,21 +9,12 @@ namespace PokeApi.Controllers
     [ApiController]
     public class PokemonController : ControllerBase
     {
-
-        PokemonGet _pokemonGet;
-
-        public PokemonController(PokemonGet pokemonGet)
-        {
-            _pokemonGet = pokemonGet;
-        }
-
+      
         [HttpGet]
         [Route("{id}")]
-        public Task<IActionResult> GetPokemon(int id)
+        public async Task<IActionResult> GetPokemon(int id)
         {
-            var pokemon = _pokemonGet.GetSinglePokemonAsync<Pokemon>(id);
-            return Task.FromResult<IActionResult>(Ok(pokemon));
+            throw new NotImplementedException();
         }
-
     }
 }

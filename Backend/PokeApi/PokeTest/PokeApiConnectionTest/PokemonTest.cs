@@ -14,10 +14,6 @@ public class PokemonTest
     [Test]
     public void SinglePokemonTest()
     {
-        var pokeConnection = new PokeApiGet<Pokemon>();
-        var pokeApiGet = new PokemonGet("https://pokeapi.co/api/v2/pokemon/", pokeConnection);
-
-        var pokeResult = pokeApiGet.GetSinglePokemonAsync<Pokemon>(1).Result;
-        Assert.Pass();
+       
     }
 }

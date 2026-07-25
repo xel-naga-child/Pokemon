@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PokeBl.Model.Pokemon
+namespace PokeBl.BL.Pokemon
 {
-    public class Pokemon
+    public interface IPokemonBL
     {
-
     }
 }
