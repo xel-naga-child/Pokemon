@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PokeBl.Model.Pokemon
 {
-    public class Pokemon
+    public class PokemonDTO
     {
 
     }

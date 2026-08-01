@@ -4,13 +4,22 @@ using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
+using PokeApiConnection.Configuration;
 
 namespace PokeApiConnection.PokeConnection
 {
     public class PokeApiGet<T> : IPokeApiGet<T> where T : class
     {
-        public async Task<T> GetAsync(string url)
+        public PokemonOptions _pokemonOptions;
+
+
+        public PokeApiGet(PokemonOptions pokemonOptions)
         {
+            this._pokemonOptions = pokemonOptions;
+        }
+        public async Task<T> GetAsync(int id)
+        {
+            string url = $"{_pokemonOptions.ApiUrl}/{id}";
             try
             {
                 using (var httpClient = new HttpClient())

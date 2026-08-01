@@ -1,5 +1,9 @@
+using Microsoft.Extensions.Options;
+using PokeApiConnection.Configuration;
+using PokeApiConnection.PokeConnection;
 using PokeBl.BL.Pokemon;
 using PokeBl.BL.PokemonBL;
+using PokeBl.Model.Pokemon;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +14,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Config
+builder.Services.Configure<PokemonOptions>(
+    builder.Configuration.GetSection("Pokemon"));
+builder.Services.AddScoped(sp => sp.GetRequiredService<IOptions<PokemonOptions>>().Value);
 
+//BL
 builder.Services.AddScoped<IPokemonBL, PokemonBL>();
 
+//DTO
+builder.Services.AddScoped<IPokeApiGet<PokemonDTO>, PokeApiGet<PokemonDTO>>();
 
 var app = builder.Build();
 
