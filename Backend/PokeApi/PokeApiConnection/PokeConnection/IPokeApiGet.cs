@@ -6,6 +6,7 @@ namespace PokeApiConnection.PokeConnection
 {
     public interface IPokeApiGet<T> where T : class
     {
-        public Task<T> GetAsync(int id);
+        public Task<T> GetAsync(int id = 0);
+        public Task<T> GetListAsync(int offset = 0, int limit = 20);
     }
 }

@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PokeBl.BL.Pokemon;
-using PokeBl.BL.PokemonBL;
-using PokeBl.Model.Pokemon;
 
 namespace PokeApi.Controllers
 {
@@ -11,10 +8,12 @@ namespace PokeApi.Controllers
     public class PokemonController : ControllerBase
     {
         private readonly IPokemonBL _pokemonBL;
+        private readonly IPokemonListBL _pokemonListBL;
 
-        public PokemonController(IPokemonBL pokemonBL)
+        public PokemonController(IPokemonBL pokemonBL, IPokemonListBL pokemonListBL)
         {
             this._pokemonBL = pokemonBL;
+            this._pokemonListBL = pokemonListBL;
         }
 
 
@@ -28,6 +27,14 @@ namespace PokeApi.Controllers
                 return NotFound();
             }
             return Ok(pokemon);
+        }
+
+        [HttpGet]
+        [Route("list")]
+        public async Task<IActionResult> GetPokemonList(int offset = 0, int limit = 20)
+        {
+            var pokemons = await _pokemonListBL.ListPokemonAsync(offset, limit);
+            return Ok(pokemons);
         }
     }
 }

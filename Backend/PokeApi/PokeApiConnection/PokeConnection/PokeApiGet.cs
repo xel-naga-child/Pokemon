@@ -17,9 +17,29 @@ namespace PokeApiConnection.PokeConnection
         {
             this._pokemonOptions = pokemonOptions;
         }
-        public async Task<T> GetAsync(int id)
+        public async Task<T> GetAsync(int id = 0)
         {
             string url = $"{_pokemonOptions.ApiUrl}/{id}";
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var deserializedObject = JsonSerializer.Deserialize<T>(jsonResponse);
+                    return deserializedObject;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($" {url}: {ex.Message}", ex);
+            }
+        }
+
+        public async Task<T> GetListAsync(int offset = 0, int limit = 20)
+        {
+            string url = $"{_pokemonOptions.ApiUrl}?offset={offset}&limit={limit}";
             try
             {
                 using (var httpClient = new HttpClient())

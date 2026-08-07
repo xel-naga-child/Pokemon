@@ -3,6 +3,7 @@ using PokeApiConnection.Configuration;
 using PokeApiConnection.PokeConnection;
 using PokeBl.BL.Pokemon;
 using PokeBl.BL.PokemonBL;
+using PokeBl.DTO.Pokemon;
 using PokeBl.Model.Pokemon;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,9 +22,13 @@ builder.Services.AddScoped(sp => sp.GetRequiredService<IOptions<PokemonOptions>>
 
 //BL
 builder.Services.AddScoped<IPokemonBL, PokemonBL>();
+builder.Services.AddScoped<IPokemonListBL, PokemonListBL>();
+
 
 //DTO
 builder.Services.AddScoped<IPokeApiGet<PokemonDTO>, PokeApiGet<PokemonDTO>>();
+builder.Services.AddScoped<IPokeApiGet<PokemonListDTO>, PokeApiGet<PokemonListDTO>>();
+
 
 var app = builder.Build();
 
