@@ -1,26 +1,24 @@
 import './App.css'
+import {PokemonList} from './presentation/Pages/PokemonList/PokemonList.uc.tsx'
+import { Menu } from 'antd';
 
 function App() {
 
+  let items = [
+    {
+      label: 'Pokemon',
+      key: 'pokemon',
+    },
+    {
+      label: 'Pokemon2',
+      key: 'pokemon2',
+    },
+  ];
   return (
     <>
-      <section id="center">
-        <div className="hero">
-        </div>
+    <Menu items={items} mode='vertical' />
+    <PokemonList />
 
-        <div>
-        </div>
-        
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-       
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
     </>
   )
 }
