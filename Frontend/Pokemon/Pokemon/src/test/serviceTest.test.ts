@@ -1,8 +1,7 @@
-import {expect, test} from 'vitest';
-import {PokemonListService} from '../services/PokeServices';
+import { expect, test } from "vitest";
+import { PokemonListService } from "../services/PokeServices";
 
-test('PokemonListServiceTest', async () => {   
-
-    expect(await PokemonListService(0, 10)).toBeDefined();
-
- })
+test("PokemonListServiceTest", async () => {
+    
+  expect(await PokemonListService(0, 10)).toBeDefined();
+});
