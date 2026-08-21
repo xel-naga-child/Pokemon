@@ -10,10 +10,13 @@ namespace PokeBl.BL.Pokemon
     public class PokemonListBL : IPokemonListBL
     {
         private IPokeApiGet<PokemonListDTO> _pokeApiGet;
+        private IPokeApiGet<PokemonDTO> _pokeApiGetDetails;
 
-        public PokemonListBL(IPokeApiGet<PokemonListDTO> pokeApiGet)
+
+        public PokemonListBL(IPokeApiGet<PokemonListDTO> pokeApiGet, IPokeApiGet<PokemonDTO> pokeApiGetDetails)
         {
             this._pokeApiGet = pokeApiGet;
+            this._pokeApiGetDetails = pokeApiGetDetails;
         }
     
 
@@ -23,5 +26,20 @@ namespace PokeBl.BL.Pokemon
 
         }
 
+        public async Task<List<PokemonDTO>> ListPokemonDetailsAsync(int offSet = 0, int limit = 20)
+        {
+            var taskList = new List<Task<PokemonDTO>>();
+
+            for (int i = offSet + 1; i <= offSet + limit; i++)
+            {
+                var pokemonDetails = _pokeApiGetDetails.GetAsync(i);
+                taskList.Add(pokemonDetails);
+            }
+
+            var pokemonList = await Task.WhenAll(taskList);
+
+            return pokemonList.ToList();
+
+        }
     }
 }

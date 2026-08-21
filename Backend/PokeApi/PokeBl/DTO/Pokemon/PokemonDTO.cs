@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokeBl.DTO.Pokemon;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,6 +14,6 @@ namespace PokeBl.Model.Pokemon
         public int order { get; set; }
         public int weight { get; set; }
         //TODO: abilities, forms, game_indices, held_items, location_area_encounters, moves, species, sprites, stats, types
-
+        public Sprites sprites { get; set; }
     }
 }

@@ -36,5 +36,13 @@ namespace PokeApi.Controllers
             var pokemons = await _pokemonListBL.ListPokemonAsync(offset, limit);
             return Ok(pokemons);
         }
+
+        [HttpGet]
+        [Route("list/details")]
+        public async Task<IActionResult> GetPokemonDetailsList(int offset = 0, int limit = 20)
+        {
+            var pokemonDetails = await _pokemonListBL.ListPokemonDetailsAsync(offset, limit);
+            return Ok(pokemonDetails);
+        }
     }
 }

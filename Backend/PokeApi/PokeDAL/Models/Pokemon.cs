@@ -8,16 +8,22 @@ namespace PokeDAL.Models;
 public partial class Pokemon
 {
     public int Id { get; set; }
-
     public string Name { get; set; }
-
     public int? BaseExperience { get; set; }
-
     public int? Height { get; set; }
-
     public bool? IsDefault { get; set; }
-
     public int? Order { get; set; }
-
     public int? Weight { get; set; }
+
+    public class Sprites
+    {
+        public string Back_Default { get; set; }
+        public string Back_Female { get; set; }
+        public string Back_Shiny { get; set; }
+        public string Back_ShinyFemale { get; set; }
+        public string Front_Default { get; set; }
+        public string Front_Female { get; set; }
+        public string Front_Shiny { get; set; }
+        public string Front_ShinyFemale { get; set; }
+    }
 }
