@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PokemonListService } from "../../../services/PokeServices.ts";
+import { PokemonListDetailService } from "../../../services/PokeServices.ts";
 import type { Pokemon } from "../../../dto/Pokemon.ts";
 
 export function usePokeTree() {
@@ -7,8 +7,9 @@ export function usePokeTree() {
 
   useEffect(() => {
     const fetchPokemonList = async () => {
-      const pokemonList = await PokemonListService(0, 20);
-      setPokemonList(pokemonList.results);
+      const pokemonList = await PokemonListDetailService(0, 20);
+      
+      setPokemonList(pokemonList);
     };
 
     fetchPokemonList();
