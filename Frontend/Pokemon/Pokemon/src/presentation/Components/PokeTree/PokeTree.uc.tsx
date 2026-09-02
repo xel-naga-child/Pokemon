@@ -6,14 +6,17 @@ export const PokeTree = () => {
   const treeData = method.pokemonList.map((pokemon) => ({
     title: pokemon.name,
     key: pokemon.id,
-    icon: (
+    icon: 
       <img
         src={pokemon.sprites.front_default}
         alt={pokemon.name}
         style={{ width: 20, height: 20 }}
       />
-    ),
+    ,
   }));
 
-  return <Tree treeData={treeData} />;
+  return <Tree
+  treeData={treeData}
+  showIcon={true}
+  />;
 };
