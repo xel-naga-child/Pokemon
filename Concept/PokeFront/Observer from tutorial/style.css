@@ -1,0 +1,11 @@
+
+#my-work img{
+    translate: -100%;
+    opacity: 1;
+    transition: 800ms ease;
+}
+
+#my-work img.show{
+    translate: 0;
+    opacity: 1;
+}
