@@ -1,36 +1,36 @@
-import { Tree } from "antd";
+import { Tree, Spin } from "antd";
 import { usePokeTree } from "./PokeTree.cb.ts";
-import { useInView, useOnInView } from "react-intersection-observer";
+import { useOnInView } from "react-intersection-observer";
 
 export const PokeTree = () => {
   //#hooks
-  // const { ref, inView } = useInView({});
+  const method = usePokeTree();
 
   const trackingRef = useOnInView(
     (inView, entry) => {
-      console.log("inView", inView, entry);
 
       if (inView) {
-        // Element is in view, so log an impression
-        console.log("Element appeared in view", entry.target);
+
+        method.setOffset((prevOffset) => prevOffset + 20);
+        method.fetchPokemonList();
       } else {
-        console.log("Element left view", entry.target);
+        
       }
     },
     {
-      /* Optional options */
       threshold: 0.5,
-      triggerOnce: true,
     },
   );
-  const method = usePokeTree();
 
   const treeData = method.pokemonList.map((pokemon, index) => {
     const isLast = index === method.pokemonList.length - 1;
 
     return {
       title: isLast ? (
-        <span ref={trackingRef}>{pokemon.name}</span>
+        <span ref={trackingRef}>
+          {pokemon.name}
+          <Spin size="small" style={{ marginLeft: 8 }}  />
+        </span>
       ) : (
         pokemon.name
       ),
