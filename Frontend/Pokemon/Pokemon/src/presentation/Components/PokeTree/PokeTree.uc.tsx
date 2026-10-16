@@ -4,32 +4,20 @@ import { useOnInView } from "react-intersection-observer";
 
 export const PokeTree = () => {
   //#hooks
-  const method = usePokeTree();
+  const { pokemonList, loadMore } = usePokeTree();
 
-  const trackingRef = useOnInView(
-    (inView, entry) => {
+  const trackingRef = useOnInView((inView) => inView && loadMore(), {
+    threshold: 0.5,
+  });
 
-      if (inView) {
-
-        method.setOffset((prevOffset) => prevOffset + 20);
-        method.fetchPokemonList();
-      } else {
-        
-      }
-    },
-    {
-      threshold: 0.5,
-    },
-  );
-
-  const treeData = method.pokemonList.map((pokemon, index) => {
-    const isLast = index === method.pokemonList.length - 1;
+  const treeData = pokemonList.map((pokemon, index) => {
+    const isLast = index === pokemonList.length - 1;
 
     return {
       title: isLast ? (
         <span ref={trackingRef}>
           {pokemon.name}
-          <Spin size="small" style={{ marginLeft: 8 }}  />
+          <Spin size="small" style={{ marginLeft: 8 }} />
         </span>
       ) : (
         pokemon.name
@@ -45,5 +33,9 @@ export const PokeTree = () => {
     };
   });
 
-  return <Tree treeData={treeData} showIcon={true} />;
+  return (
+    <>
+      <Tree treeData={treeData} showIcon={true} />;<div ref={trackingRef}></div>
+    </>
+  );
 };

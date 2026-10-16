@@ -1,31 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PokemonListDetailService } from "../../../services/PokeServices.ts";
 import type { Pokemon } from "../../../dto/Pokemon.ts";
 
 export function usePokeTree() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
-  const [offset, setOffset] = useState<number>(0);
+  const offsetRef = useRef(0);
+  const loadingRef = useRef(false);
 
-  const fetchPokemonList = async () => {
-    
-    const newPokemonList = await PokemonListDetailService(offset, 20);
-
-    setPokemonList((pokemonList) => [...pokemonList, ...newPokemonList]);
+  const loadMore = async () => {
+    if (loadingRef.current) return;
+    loadingRef.current = true;
+    const offSet = offsetRef.current;
+    offsetRef.current += 20;
+    try {
+      const list = await PokemonListDetailService(offSet, 20);
+      setPokemonList((prev) => [...prev, ...list]);
+    } finally {
+      loadingRef.current = false;
+    }
   };
 
-  useEffect(() => {
-    let ignore = false;
-    PokemonListDetailService(offset, 20).then((list) => {
-      if (!ignore) {
-        setPokemonList((prev) => [...prev, ...list]);
-        setOffset((prevOffset) => prevOffset + 20);
-      }
-    });
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  return { pokemonList, fetchPokemonList, setOffset };
+  return { pokemonList, loadMore };
 }
